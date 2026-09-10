@@ -15,8 +15,8 @@ comportamento dinâmico, validações no lado do cliente e comunicação assínc
 
 ### Navegação
 
-[Documentação P1](./docs/p1/) 
-[Documentação P2](./docs/p2/)
+[Documentação P1](./docs/P1/) 
+[Documentação P2](./docs/P2/)
 
 ---
 

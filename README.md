@@ -441,10 +441,10 @@ conforme o desenvolvimento.
 
 | Integrante | Branch |
 |---|---|
-| `Henrique Silva` | `integrante/nome-sobrenome` |
-| `Melissa Victória` | `integrante/nome-sobrenome` |
-| `Pedro Henrique` | `integrante/nome-sobrenome` |
-| `Lucas Rafael` | `integrante/nome-sobrenome` |
+| `Henrique Silva` | `integrante/henrique-silva` |
+| `Melissa Victória` | `integrante/melissa-victoria` |
+| `Pedro Henrique` | `integrante/pedro-henrique` |
+| `Lucas Rafael` | `integrante/lucas-rafael` |
 
 ---
 

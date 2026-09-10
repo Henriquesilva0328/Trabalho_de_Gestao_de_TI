@@ -13,6 +13,11 @@ acessibilidade e boas práticas de CSS.
 A **P2** dará continuidade à solução desenvolvida na P1, incorporando
 comportamento dinâmico, validações no lado do cliente e comunicação assíncrona.
 
+### Navegação
+
+[Documentação P1](./docs/p1/) 
+[Documentação P2](./docs/p2/)
+
 ---
 
 ## Visão do Projeto

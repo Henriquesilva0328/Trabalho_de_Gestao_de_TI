@@ -1,1 +1,453 @@
 
+:root {
+  --papel: #E9EDE9;
+  --papel-forte: #DCE3DB;
+  --papel-branco: #F4F6F3;
+  --tinta: #202821;
+  --tinta-suave: #55605A;
+  --linha: #B9C3B7;
+  --selo-pendente: #7A3B32;
+  --selo-pendente-fundo: #F1E1DC;
+  --selo-aprovado: #3F5D45;
+  --selo-aprovado-fundo: #DEE8DE;
+  --selo-reprovado: #6B2B2B;
+  --selo-reprovado-fundo: #EAD9D6;
+
+  --fonte-titulo: "Source Serif 4", Georgia, serif;
+  --fonte-corpo: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --fonte-protocolo: "IBM Plex Mono", Consolas, monospace;
+
+  --largura-indice: 15rem;
+  --largura-leitura: 46rem;
+  --raio: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fonte-corpo);
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+  color: var(--tinta);
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: var(--largura-leitura);
+}
+
+a {
+  color: var(--selo-aprovado);
+}
+
+/* Link de acesso rápido, visível apenas ao receber foco */
+.pular-conteudo {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--tinta);
+  color: var(--papel-branco);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--raio);
+  z-index: 10;
+}
+
+.pular-conteudo:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Foco visível consistente em toda a página */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--selo-pendente);
+  outline-offset: 2px;
+}
+
+/* ---------- Cabeçalho / timbre institucional ---------- */
+
+.timbre {
+  background: var(--papel-branco);
+  padding: 2rem 1.5rem 2.25rem;
+}
+
+.timbre__faixa {
+  max-width: 60rem;
+  margin: 0 auto;
+  border-top: 3px double var(--tinta);
+  height: 0;
+}
+
+.timbre__conteudo {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.timbre__instituicao {
+  font-family: var(--fonte-protocolo);
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: var(--tinta-suave);
+  margin: 0 0 0.5rem;
+}
+
+.timbre__titulo {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  max-width: 34rem;
+}
+
+.timbre__descricao {
+  color: var(--tinta-suave);
+  max-width: 42rem;
+}
+
+/* ---------- Layout de duas colunas ---------- */
+
+.pagina {
+  max-width: 60rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: var(--largura-indice) 1fr;
+  gap: 2.5rem;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.indice ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: sticky;
+  top: 1.5rem;
+  border-left: 2px solid var(--linha);
+}
+
+.indice li + li {
+  margin-top: 0.35rem;
+}
+
+.indice a {
+  display: block;
+  padding: 0.55rem 1rem;
+  text-decoration: none;
+  color: var(--tinta-suave);
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+}
+
+.indice a:hover,
+.indice a:focus-visible {
+  color: var(--tinta);
+  border-left-color: var(--selo-pendente);
+  background: var(--papel-forte);
+}
+
+.conteudo {
+  min-width: 0;
+}
+
+.secao {
+  margin-bottom: 3.5rem;
+  scroll-margin-top: 1.5rem;
+}
+
+.secao__introducao {
+  color: var(--tinta-suave);
+}
+
+/* ---------- Formulário ---------- */
+
+.ficha {
+  background: var(--papel-branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 1.75rem;
+}
+
+.ficha__grupo {
+  border: none;
+  border-top: 1px solid var(--linha);
+  padding: 1.25rem 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem 1.5rem;
+}
+
+.ficha__grupo:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.ficha__grupo legend {
+  grid-column: 1 / -1;
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 0.3rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.campo--largo {
+  grid-column: 1 / -1;
+}
+
+.campo label,
+.campo__rotulo-grupo {
+  font-size: 0.92rem;
+  color: var(--tinta-suave);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.campo--radios {
+  gap: 0.5rem;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--tinta);
+}
+
+.ficha__acoes {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.botao {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--raio);
+  border: 1px solid var(--tinta);
+  cursor: pointer;
+}
+
+.botao--principal {
+  background: var(--tinta);
+  color: var(--papel-branco);
+}
+
+.botao--principal:hover {
+  background: #33403A;
+}
+
+.botao--secundario {
+  background: transparent;
+  color: var(--tinta);
+}
+
+.botao--secundario:hover {
+  background: var(--papel-forte);
+}
+
+/* ---------- Tabela de registros ---------- */
+
+.tabela-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+}
+
+.tabela-registros {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--papel-branco);
+  min-width: 40rem;
+}
+
+.tabela-registros caption {
+  text-align: left;
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  color: var(--tinta-suave);
+  border-bottom: 1px solid var(--linha);
+}
+
+.tabela-registros th,
+.tabela-registros td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--linha);
+  font-size: 0.95rem;
+}
+
+.tabela-registros thead th {
+  font-family: var(--fonte-corpo);
+  font-weight: 600;
+  background: var(--papel-forte);
+}
+
+.tabela-registros tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tabela-registros tbody tr:nth-child(even) {
+  background: var(--papel);
+}
+
+.protocolo {
+  font-family: var(--fonte-protocolo);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* Selos de situação, com efeito de carimbo levemente girado */
+
+.selo {
+  display: inline-block;
+  font-family: var(--fonte-protocolo);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--raio);
+  border: 1.5px solid currentColor;
+  transform: rotate(-2deg);
+}
+
+.selo--pendente {
+  color: var(--selo-pendente);
+  background: var(--selo-pendente-fundo);
+}
+
+.selo--aprovado {
+  color: var(--selo-aprovado);
+  background: var(--selo-aprovado-fundo);
+  transform: rotate(1.5deg);
+}
+
+.selo--reprovado {
+  color: var(--selo-reprovado);
+  background: var(--selo-reprovado-fundo);
+  transform: rotate(-1.5deg);
+}
+
+/* ---------- Nota de governança ---------- */
+
+.nota {
+  background: var(--papel-forte);
+  border-left: 4px solid var(--selo-aprovado);
+  border-radius: var(--raio);
+  padding: 1.5rem 1.75rem;
+}
+
+.nota p {
+  color: var(--tinta);
+  margin-bottom: 0;
+}
+
+/* ---------- Rodapé ---------- */
+
+.rodape {
+  background: var(--papel-branco);
+  border-top: 1px solid var(--linha);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--tinta-suave);
+  font-size: 0.9rem;
+}
+
+.rodape p {
+  max-width: none;
+  margin: 0.2rem auto;
+}
+
+/* ---------- Responsividade ---------- */
+
+@media (max-width: 780px) {
+  .pagina {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .indice ul {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    border-left: none;
+    border-bottom: 2px solid var(--linha);
+    padding-bottom: 0.5rem;
+  }
+
+  .indice li + li {
+    margin-top: 0;
+  }
+
+  .indice a {
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    margin-left: 0;
+  }
+
+  .indice a:hover,
+  .indice a:focus-visible {
+    border-left-color: transparent;
+    border-bottom-color: var(--selo-pendente);
+  }
+
+  .ficha__grupo {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .timbre {
+    padding: 1.5rem 1rem 1.75rem;
+  }
+
+  .ficha {
+    padding: 1.25rem;
+  }
+}
+

@@ -1,1 +1,44 @@
+# Estrutura semântica e boas práticas de CSS na interface de registro de acessos a laboratórios
 
+Relatório técnico referente à Etapa P1, Projeto COBIT, da disciplina de Gestão de Tecnologia da Informação, Fatec Barueri, sob orientação do professor Vander Ribeiro.
+
+## Introdução
+
+Este documento fundamenta as escolhas de estruturação semântica e de estilização da interface desenvolvida para a Etapa P1 do Projeto COBIT. A interface foi construída exclusivamente com HTML5 e CSS3, no lado cliente, para o cadastro e a visualização de solicitações de acesso a laboratórios de informática, tema ligado aos processos EDM01 e APO01 do COBIT, referentes à governança e à gestão de acessos.
+
+A consulta bibliográfica que orientou o trabalho teve como base os capítulos introdutórios da obra de FREEMAN e FREEMAN (2008), especialmente os trechos sobre estrutura de páginas web, padrões HTML, separação entre conteúdo e apresentação, modelo de caixa e construção de formulários e tabelas.
+
+## Estrutura semântica adotada
+
+A página utiliza elementos estruturais do HTML5 em substituição a divisões genéricas, de modo a expressar o papel de cada região do documento para o navegador e para tecnologias assistivas.
+
+| Tag | Justificativa |
+|---|---|
+| `header` | Delimita a abertura da página, com a identificação da instituição, o título do projeto e a referência aos processos de governança que motivam a interface. |
+| `nav` | Agrupa os links de navegação interna entre as seções, permitindo que o conjunto seja identificado como bloco de navegação por leitores de tela. |
+| `main` | Envolve o conteúdo principal e único da página, o formulário de cadastro e a tabela de consulta, servindo também de alvo ao link de pular conteúdo. |
+| `section` | Separa o formulário de cadastro e a tabela de registros em blocos temáticos distintos, cada um com cabeçalho próprio de nível dois. |
+| `aside` | Contém a nota de governança, conteúdo complementar que justifica os campos do formulário conforme os processos EDM01 e APO01, sem integrar o fluxo principal. |
+| `footer` | Reúne as informações institucionais de encerramento, curso, disciplina e etapa da entrega. |
+| `form`, `fieldset`, `legend` | O formulário é dividido em três agrupamentos: dados do solicitante, dados do acesso e aprovação, cada um com sua legenda. |
+| `table`, `caption`, `thead`, `tbody`, `th scope` | A tabela utiliza legenda descritiva e cabeçalhos associados explicitamente às células, conforme a recomendação de estruturação de tabelas presente na obra consultada. |
+
+## Boas práticas de CSS3 aplicadas
+
+A folha de estilos foi mantida em arquivo separado do HTML, conforme o princípio de separação entre estrutura e apresentação. Cores, tipografia e espaçamento foram centralizados em variáveis CSS, o que reduz repetição e aplica na prática os conceitos de herança e cascata.
+
+O layout principal utiliza CSS Grid para organizar a página em duas colunas, com atenção ao modelo de caixa no dimensionamento de formulários e tabelas, e seletores de classe específicos para cada componente evitam conflitos de especificidade.
+
+## Responsividade e acessibilidade
+
+Consultas de mídia reorganizam a grade de duas colunas em uma coluna única em telas estreitas e transformam o menu lateral em barra horizontal, enquanto a tabela recebe rolagem própria para preservar a leitura em dispositivos móveis.
+
+Do lado da acessibilidade, a interface conta com link para pular para o conteúdo principal, foco visível em todos os elementos interativos, rótulos associados a cada campo por meio do atributo `for`, e respeito à preferência do usuário por redução de movimento.
+
+## Considerações finais
+
+A interface atende aos requisitos da Etapa P1 do Projeto COBIT, aplicando estrutura semântica em HTML5 e boas práticas de CSS3 fundamentadas em FREEMAN e FREEMAN (2008), e prepara a base estrutural sobre a qual a Etapa P2 incorporará comportamento dinâmico, validações e requisições assíncronas.
+
+## Referências
+
+FREEMAN, Elisabeth; FREEMAN, Eric. *Use a cabeça! HTML com CSS e XHTML*. 2. ed. Rio de Janeiro: Alta Books, 2008. 580 p. ISBN 978-85-7608-218-7.

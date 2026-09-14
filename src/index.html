@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Acessos a Laboratórios | Fatec Barueri</title>
+  <meta name="description" content="Interface para cadastro e consulta de solicitações de acesso a laboratórios, desenvolvida para a disciplina de Gestão de Tecnologia da Informação.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+  <a class="pular-conteudo" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+  <header class="timbre">
+    <div class="timbre__faixa"></div>
+    <div class="timbre__conteudo">
+      <p class="timbre__instituicao">Fatec Barueri</p>
+      <h1 class="timbre__titulo">Registro de Acessos a Laboratórios</h1>
+      <p class="timbre__descricao">
+        Ficha de controle para solicitação e acompanhamento de acessos aos laboratórios de informática,
+        elaborada no contexto da disciplina de Gestão de Tecnologia da Informação, com base nos processos
+        EDM01 e APO01 do COBIT.
+      </p>
+    </div>
+    <div class="timbre__faixa"></div>
+  </header>
+
+  <div class="pagina">
+
+    <nav class="indice" aria-label="Seções do documento">
+      <ul>
+        <li><a href="#cadastro">Registrar acesso</a></li>
+        <li><a href="#consulta">Consultar registros</a></li>
+        <li><a href="#governanca">Nota de governança</a></li>
+      </ul>
+    </nav>
+
+    <main id="conteudo-principal" class="conteudo">
+
+      <section id="cadastro" class="secao" aria-labelledby="cadastro-titulo">
+        <h2 id="cadastro-titulo">Solicitação de acesso</h2>
+        <p class="secao__introducao">
+          Preencha os dados abaixo para registrar uma nova solicitação de acesso a um dos
+          laboratórios do câmpus. Campos marcados com asterisco são obrigatórios.
+        </p>
+
+        <form class="ficha" action="#" method="get">
+
+          <fieldset class="ficha__grupo">
+            <legend>Dados do solicitante</legend>
+
+            <div class="campo">
+              <label for="nome">Nome completo *</label>
+              <input type="text" id="nome" name="nome" autocomplete="name" required>
+            </div>
+
+            <div class="campo">
+              <label for="ra">Registro acadêmico (RA) *</label>
+              <input type="text" id="ra" name="ra" inputmode="numeric" pattern="[0-9]{6,12}" required>
+            </div>
+
+            <div class="campo">
+              <label for="curso">Curso *</label>
+              <select id="curso" name="curso" required>
+                <option value="">Selecione</option>
+                <option value="gti">Gestão de Tecnologia da Informação</option>
+                <option value="ads">Análise e Desenvolvimento de Sistemas</option>
+                <option value="redes">Redes de Computadores</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="turno">Turno *</label>
+              <select id="turno" name="turno" required>
+                <option value="">Selecione</option>
+                <option value="manha">Manhã</option>
+                <option value="tarde">Tarde</option>
+                <option value="noite">Noite</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset class="ficha__grupo">
+            <legend>Dados do acesso solicitado</legend>
+
+            <div class="campo">
+              <label for="laboratorio">Laboratório *</label>
+              <select id="laboratorio" name="laboratorio" required>
+                <option value="">Selecione</option>
+                <option value="lab1">Laboratório 1, Redes</option>
+                <option value="lab2">Laboratório 2, Desenvolvimento</option>
+                <option value="lab3">Laboratório 3, Multimídia</option>
+              </select>
+            </div>
+
+            <div class="campo campo--radios">
+              <span class="campo__rotulo-grupo">Tipo de acesso *</span>
+              <label class="opcao">
+                <input type="radio" name="tipo-acesso" value="temporario" checked>
+                Temporário, uso pontual
+              </label>
+              <label class="opcao">
+                <input type="radio" name="tipo-acesso" value="permanente">
+                Permanente, uso recorrente no semestre
+              </label>
+            </div>
+
+            <div class="campo">
+              <label for="data">Data pretendida *</label>
+              <input type="date" id="data" name="data" required>
+            </div>
+
+            <div class="campo campo--largo">
+              <label for="justificativa">Justificativa *</label>
+              <textarea id="justificativa" name="justificativa" rows="4" required></textarea>
+            </div>
+          </fieldset>
+
+          <fieldset class="ficha__grupo">
+            <legend>Aprovação</legend>
+
+            <div class="campo">
+              <label for="responsavel">Responsável pela aprovação</label>
+              <input type="text" id="responsavel" name="responsavel" autocomplete="off">
+            </div>
+
+            <div class="campo">
+              <label for="situacao">Situação inicial</label>
+              <select id="situacao" name="situacao">
+                <option value="pendente" selected>Pendente</option>
+                <option value="aprovado">Aprovado</option>
+                <option value="reprovado">Reprovado</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <div class="ficha__acoes">
+            <button type="submit" class="botao botao--principal">Registrar solicitação</button>
+            <button type="reset" class="botao botao--secundario">Limpar ficha</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="consulta" class="secao" aria-labelledby="consulta-titulo">
+        <h2 id="consulta-titulo">Registro de solicitações</h2>
+        <p class="secao__introducao">
+          Histórico de solicitações já lançadas, com o protocolo gerado no momento do cadastro
+          e a situação corrente de cada pedido.
+        </p>
+
+        <div class="tabela-scroll">
+          <table class="tabela-registros">
+            <caption>Solicitações de acesso registradas no período letivo corrente</caption>
+            <thead>
+              <tr>
+                <th scope="col">Protocolo</th>
+                <th scope="col">Solicitante</th>
+                <th scope="col">Laboratório</th>
+                <th scope="col">Tipo de acesso</th>
+                <th scope="col">Data</th>
+                <th scope="col">Situação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="protocolo">GTI2026001</td>
+                <td>Melissa Victória</td>
+                <td>Laboratório 2, Desenvolvimento</td>
+                <td>Permanente</td>
+                <td>03/03/2026</td>
+                <td><span class="selo selo--aprovado">Aprovado</span></td>
+              </tr>
+              <tr>
+                <td class="protocolo">GTI2026002</td>
+                <td>Pedro Henrique</td>
+                <td>Laboratório 1, Redes</td>
+                <td>Temporário</td>
+                <td>10/03/2026</td>
+                <td><span class="selo selo--pendente">Pendente</span></td>
+              </tr>
+              <tr>
+                <td class="protocolo">GTI2026003</td>
+                <td>Henrique Moura Silva</td>
+                <td>Laboratório 3, Multimídia</td>
+                <td>Temporário</td>
+                <td>12/03/2026</td>
+                <td><span class="selo selo--reprovado">Reprovado</span></td>
+              </tr>
+          
+              <tr>
+                <td class="protocolo">GTI2026005</td>
+                <td>Lucas</td>
+                <td>Laboratório 1, Redes</td>
+                <td>Temporário</td>
+                <td>20/03/2026</td>
+                <td><span class="selo selo--pendente">Pendente</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside id="governanca" class="nota" aria-labelledby="governanca-titulo">
+        <h2 id="governanca-titulo">Nota de governança</h2>
+        <p>
+          Os campos de responsável e situação existem para manter rastreabilidade sobre quem concede
+          e quem solicita cada acesso, em linha com o processo APO01, gestão do framework de gerenciamento
+          de TI. O protocolo gerado para cada solicitação permite auditoria posterior do fluxo completo,
+          apoiando o processo EDM01, garantindo o estabelecimento e a manutenção do framework de governança.
+        </p>
+      </aside>
+
+    </main>
+  </div>
+
+  <footer class="rodape">
+    <p>Fatec Barueri, disciplina de Gestão de Tecnologia da Informação, professor Vander Ribeiro.</p>
+    <p>P1, Projeto COBIT. Entrega em HTML5 e CSS3, estrutura semântica e responsividade.</p>
+  </footer>
+
+</body>
+</html>
+
